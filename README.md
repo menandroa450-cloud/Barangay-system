@@ -80,7 +80,7 @@ Open: http://localhost:3000
 
 ------------------------------------------------------------------------
 
-## 👥 User Roles
+##  User Roles
 
 ### Admin
 
@@ -119,7 +119,7 @@ User (1) → (Many) Attendance
 -   Cloud backup
 
 ------------------------------------------------------------------------
-## Group Members
+## 👥 Group Members
 -   ARMENION, CARL MICAHEL S.
 -   BACAY, ANGELO S.
 -   GA, JERWIN F.
