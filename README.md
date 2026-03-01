@@ -120,16 +120,16 @@ User (1) → (Many) Attendance
 
 ------------------------------------------------------------------------
 ## Group Members
-AGUILAR, MENANDRO JR. S.
-ARMENION, CARL MICAHEL S.
-BACAY, ANGELO S.
-GA, JERWIN F.
-JALLORES, JOSE MAURICIO A.
-VALEROSO, ANGELICA M.
-CO, ANNE DOMINIQUE A.
-PAJAROJA, MICHAEL LYN C.
-ESTOPASE, KZEL Y.
-IBANEZ, FAITH ANNE E.
+-   ARMENION, CARL MICAHEL S.
+-   BACAY, ANGELO S.
+-   GA, JERWIN F.
+-   JALLORES, JOSE MAURICIO A.
+-   VALEROSO, ANGELICA M.
+-   CO, ANNE DOMINIQUE A.
+-   PAJAROJA, MICHAEL LYN C.
+-   ESTOPASE, KZEL Y.
+-   BANEZ, FAITH ANNE E.
+-   AGUILAR, MENANDRO JR. S
 ------------------------------------------------------------------------
 
 ## 📄 License
