@@ -1,173 +1,137 @@
-# Barangay Attendance System — Full‑Stack Capstone (Next.js + Prisma DB)
+ 🏢 Barangay Attendance Monitoring System
 
-This project wraps your existing **React App.jsx** UI inside a modern **Next.js** full‑stack app, and adds a real backend + database.
+A modern full-stack Web-Based Attendance Monitoring System developed for
+barangay personnel to replace manual logbook attendance tracking.
 
-## What you get
-- ✅ Your existing website/UI (no redesign)
-- ✅ Backend API (Next.js Route Handlers)
-- ✅ Database (Prisma + SQLite by default)
-- ✅ Automatic "Cloud Sync" (mirrors localStorage → DB silently)
+Built using Next.js, TypeScript, Prisma ORM, and PostgreSQL.
 
-> The UI still works offline with localStorage. When the server is running, it will also sync to the DB.
+------------------------------------------------------------------------
 
----
+## 🚀 Features
 
-## 1) Install requirements
-- Node.js 18+ (recommended: Node 20)
+-   🔐 Secure Authentication System
+-   👤 Role-Based Access Control (Admin & Employee)
+-   🕒 Time In / Time Out Recording
+-   📊 Attendance Monitoring Dashboard
+-   📄 PDF Report Generation
+-   📈 Excel Report Export
+-   🛡 Middleware Route Protection
+-   🗄 Database Management using Prisma ORM
 
----
+------------------------------------------------------------------------
 
-## 2) Setup (first time)
+## 🛠 Tech Stack
 
-### A) Install dependencies
-```bash
+### Frontend
+
+-   React
+-   Next.js (App Router)
+-   TypeScript
+-   CSS
+
+### Backend
+
+-   Node.js
+-   Next.js API Routes
+-   Prisma ORM
+
+### Database
+
+-   PostgreSQL
+
+------------------------------------------------------------------------
+
+## 🏗 System Architecture
+
+The system follows a Three-Tier Architecture:
+
+1.  Presentation Layer (React + Next.js)
+2.  Application Layer (Node.js API + Prisma)
+3.  Data Layer (PostgreSQL Database)
+
+------------------------------------------------------------------------
+
+## ⚙️ Installation Guide
+
+### 1. Clone the Repository
+
+git clone https://github.com/your-username/barangay-attendance.git cd
+barangay-attendance
+
+### 2. Install Dependencies
+
 npm install
-```
 
-### B) Create your local .env
-Copy the example env file:
-```bash
-cp .env.example .env
-```
+### 3. Setup Environment Variables
 
-### C) Create the database (Prisma migrate)
-```bash
-npm run db:migrate
-```
+Create a .env file:
 
-This will create `prisma/dev.db` and generate Prisma client.
+DATABASE_URL="postgresql://username:password@localhost:5432/barangay_db"
 
----
+### 4. Run Prisma Migration
 
-## 3) Run the project
-```bash
+npx prisma migrate dev
+
+### 5. Run Development Server
+
 npm run dev
-```
 
-Open:
-- http://localhost:3000
+Open: http://localhost:3000
 
----
+------------------------------------------------------------------------
 
-## 4) Verify the backend + DB works
+## 👥 User Roles
 
-### A) Use the app normally
-- Add employees/admins
-- Time in/out
-- Edit schedule
-- etc.
+### Admin
 
-### B) Check the DB contents
-Run Prisma Studio:
-```bash
-npm run db:studio
-```
-It opens a browser UI where you can view:
-- `User`
-- `AttendanceRecord`
+-   Manage employees
+-   View attendance records
+-   Generate reports
 
----
+### Employee
 
-## 5) API endpoints (for documentation/demo)
-- `GET /api/bootstrap` → returns users + records stored in DB
-- `POST /api/sync` → upserts users + records (used by the UI sync)
+-   Login
+-   Time In / Time Out
+-   View attendance history
 
----
+------------------------------------------------------------------------
 
-## 6) Switching to PostgreSQL (optional, for “more professional” capstone)
-1. Create a Postgres DB (Supabase / Railway / Render / local)
-2. Edit `.env`:
-```bash
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DBNAME?schema=public"
-```
-3. Update `prisma/schema.prisma` datasource:
-```prisma
-provider = "postgresql"
-```
-4. Run migration again:
-```bash
-npm run db:migrate
-```
+## 🔒 Security Features
 
----
+-   Password hashing
+-   Role-based authorization
+-   Middleware route protection
+-   Secure API endpoints
 
-## Notes for your defense/presentation
-- Frontend: React (your UI) inside Next.js
-- Backend: Next.js API routes (`app/api/*`)
-- Database: Prisma ORM + SQL DB (SQLite/Postgres)
-- Sync strategy: local-first + cloud mirror (safe for demos even offline)
+------------------------------------------------------------------------
 
----
+## 📊 Database Design
 
-Made on 2026-02-10.
+User (1) → (Many) Attendance
 
+------------------------------------------------------------------------
 
-## Troubleshooting (Windows / localStorage / SSR)
-- This project disables SSR for your legacy React UI using `dynamic(..., { ssr:false })` in `app/page.tsx`
-  so browser-only APIs like `localStorage` work exactly like your original React app.
+## 📌 Future Improvements
 
+-   Biometric integration
+-   Mobile application version
+-   SMS/Email notifications
+-   Cloud backup
 
----
+------------------------------------------------------------------------
+## Group Members
+AGUILAR, MENANDRO JR. S.
+ARMENION, CARL MICAHEL S.
+BACAY, ANGELO S.
+GA, JERWIN F.
+JALLORES, JOSE MAURICIO A.
+VALEROSO, ANGELICA M.
+CO, ANNE DOMINIQUE A.
+PAJAROJA, MICHAEL LYN C.
+ESTOPASE, KZEL Y.
+IBANEZ, FAITH ANNE E.
+------------------------------------------------------------------------
 
-## Real Login (Username/Password)
-After the DB migration, seed demo accounts:
+## 📄 License
 
-```bash
-npm run db:seed
-```
-
-Demo accounts:
-- admin / admin123
-- employee / employee123
-
-Login page:
-- http://localhost:3000/login
-
----
-
-## Reports Export (PDF / Excel)
-Admin can download:
-- Excel: `/api/reports/attendance.xlsx`
-- PDF: `/api/reports/attendance.pdf`
-or open:
-- http://localhost:3000/reports
-
----
-
-## Deployment (Vercel + Postgres) — Step by step
-
-### 1) Create a Postgres database
-Recommended:
-- Supabase (Postgres) or Railway (Postgres)
-
-Copy the connection string as `DATABASE_URL`.
-
-### 2) Update Prisma datasource
-In `prisma/schema.prisma` set:
-```prisma
-provider = "postgresql"
-```
-
-### 3) Set environment variables in Vercel
-Add these in Vercel → Project → Settings → Environment Variables:
-- `DATABASE_URL` = your Postgres URL
-- `AUTH_SECRET` = long random string
-
-### 4) Deploy
-- Push the project to GitHub
-- Import repo in Vercel
-- Build command: `npm run build`
-- Install command: `npm install`
-
-### 5) Run migrations on deploy
-In Vercel, add a “Postinstall” hook via package.json or run manually in CI.
-Simplest for capstone: run once locally against the prod DB:
-```bash
-npx prisma migrate deploy
-npm run db:seed
-```
-
----
-
-## ERD Diagram
-See: `docs/erd.png`
+This project is for educational purposes.
